@@ -1,12 +1,12 @@
 FactoryBot.define do
   factory :project do
-    sequence(:name) {|n| "Project #{n}"}
+    sequence(:name) { |n| "Project #{n}" }
     description "A test project."
     due_on 1.week.from_now
     association :owner
 
     trait :with_notes do
-      after(:create){ |project| create_list(:note, 5, project: project)}
+      after(:create) { |project| create_list(:note, 5, project: project) }
     end
 
     trait :due_yesterday do
