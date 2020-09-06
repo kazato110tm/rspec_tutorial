@@ -24,8 +24,18 @@ describe User do
   end
 
   it "is invalid with a duplicate email address" do
-    FactoryBot.create(:user, email: "arron@example.com")
-    user = FactoryBot.build(:user, email: "arron@example.com")
+    User.create(
+      first_name: "Joe",
+      last_name: "Tester",
+      email: "tester@example.com",
+      password: "dottle-nouveau-pavilion-tights-fuerze"
+    )
+    user = User.new(
+      first_name: "Jane",
+      last_name: "Tester",
+      email: "tester@example.com",
+      password: "dottle-nouveau-pavilion-tights-fuerze"
+    )
     user.valid?
     expect(user.errors[:email]).to include("has already been taken")
   end

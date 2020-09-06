@@ -3,18 +3,18 @@ require 'rails_helper'
 RSpec.describe Project, type: :model do
   it "does not allow duplicate project names per user" do
     user = User.create(
-      first_name: "Joe",
-      last_name:  "Tester",
-      email:      "joetester@example.com",
-      password:   "dottle-nouveau-pavilion-tights-furze",
+      first_name: "Jane",
+      last_name: "Tester",
+      email: "tester@example.com",
+      password: "dottle-nouveau-pavilion-tights-fuerze"
     )
 
     user.projects.create(
-      name: "Test Project",
+      name: "Test project"
     )
 
     new_project = user.projects.build(
-      name: "Test Project",
+      name: "Test project"
     )
 
     new_project.valid?
@@ -24,24 +24,24 @@ RSpec.describe Project, type: :model do
   it "allows two users to share a project name" do
     user = User.create(
       first_name: "Joe",
-      last_name:  "Tester",
-      email:      "joetester@example.com",
-      password:   "dottle-nouveau-pavilion-tights-furze",
+      last_name: "Teaster",
+      email: "joetester@example.com",
+      password: "dottle-nouveau-pavilion-tights-fuerze"
     )
 
     user.projects.create(
-      name: "Test Project",
+      name: "Test project"
     )
 
     other_user = User.create(
       first_name: "Jane",
-      last_name:  "Tester",
-      email:      "janetester@example.com",
-      password:   "dottle-nouveau-pavilion-tights-furze",
+      last_name: "Teaster",
+      email: "janetester@example.com",
+      password: "dottle-nouveau-pavilion-tights-fuerze"
     )
 
     other_project = other_user.projects.build(
-      name: "Test Project",
+      name: "Test project"
     )
 
     expect(other_project).to be_valid
