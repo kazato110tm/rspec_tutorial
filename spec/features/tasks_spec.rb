@@ -3,7 +3,9 @@ require 'rails_helper'
 RSpec.feature "Tasks", type: :feature do
   scenario "user toggles a task", js: true do
     user = FactoryBot.create(:user)
-    project = FactoryBot.create(:project, name: "RSpec tutorial", owner: user)
+    project = FactoryBot.create(:project,
+      name: "RSpec tutorial",
+      owner: user)
     task = project.tasks.create!(name: "Finish RSpec tutorial")
 
     visit root_path
