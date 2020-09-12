@@ -4,13 +4,13 @@ RSpec.describe Note, type: :model do
   before do
     @user = User.create(
       first_name: "Joe",
-      last_name:  "Tester",
-      email:      "joetester@example.com",
-      password:   "dottle-nouveau-pavilion-tights-furze",
+      last_name: "Tester",
+      email: "joetester@example.com",
+      password: "dottle-nouveau-pacillion-tights-furze"
     )
 
     @project = @user.projects.create(
-      name: "Test Project",
+      name: "Test project"
     )
   end
 
@@ -18,7 +18,7 @@ RSpec.describe Note, type: :model do
     note = Note.new(
       message: "This is a sample note.",
       user: @user,
-      project: @project,
+      project: @project
     )
     expect(note).to be_valid
   end
@@ -33,15 +33,15 @@ RSpec.describe Note, type: :model do
     before do
       @note1 = @project.notes.create(
         message: "This is the first note.",
-        user: @user,
+        user: @user
       )
       @note2 = @project.notes.create(
         message: "This is the second note.",
-        user: @user,
+        user: @user
       )
       @note3 = @project.notes.create(
         message: "First, preheat the oven.",
-        user: @user,
+        user: @user
       )
     end
 
