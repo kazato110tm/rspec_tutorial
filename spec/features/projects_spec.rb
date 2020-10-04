@@ -8,6 +8,8 @@ RSpec.feature "Projects", type: :feature do
     # or the one provided by Devise:
     sign_in user
 
+    sign_in user
+
     visit root_path
 
     expect {
